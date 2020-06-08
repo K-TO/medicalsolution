@@ -4,6 +4,8 @@ namespace MedicalSolution.Presentation.ErrorHandler
 {
     public class ErrorDetails
     {
+        public bool IsError { get; set; }
+
         public int StatusCode { get; set; }
 
         public string Message { get; set; }

@@ -1,7 +1,9 @@
 ﻿using MedicalSolution.Infraestructure;
+using MedicalSolution.Infraestructure.Domain.Common;
 using MedicalSolution.Presentation.Models;
 using MedicalSolution.Services;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -76,9 +78,29 @@ namespace MedicalSolution.Presentation.Controllers
 
         // POST: api/Doctor
         [HttpPost]
-        public void Post([FromBody] Doctor doctor)
+        public IActionResult Post([FromBody] AddDoctorViewModel doctor)
         {
-            _doctorService.CreateOrUpdate(doctor);
+            JsonDefaultResponseModel response = new JsonDefaultResponseModel()
+            {
+                IsError = true
+            };
+            if (ModelState.IsValid)
+            {
+                Doctor doctorModel = new Doctor();
+                PropertyCopy.Copy(doctor, doctorModel);
+                if (_doctorService.CreateOrUpdate(doctorModel))
+                {
+                    response.IsError = false;
+                    response.Message = "Doctor creado exitosamente.";
+                }
+            }
+            else
+            {
+                response.Message = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+            }
+            return Ok(JsonConvert.SerializeObject(response));
         }
         #endregion
     }

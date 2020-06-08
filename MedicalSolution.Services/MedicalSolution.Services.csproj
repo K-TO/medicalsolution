@@ -9,6 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MedicalSolution.Data\MedicalSolution.Data.csproj" />
     <ProjectReference Include="..\MedicalSolution.Infraestructure\MedicalSolution.Infraestructure.csproj" />
   </ItemGroup>

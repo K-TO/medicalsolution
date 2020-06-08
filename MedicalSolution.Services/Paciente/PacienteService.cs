@@ -61,15 +61,11 @@ namespace MedicalSolution.Services
                 {
                     var exist = _repository.GetById(paciente.Id);
                     if (exist != null)
-                    {
                         _repository.Update(paciente);
-                        result = true;
-                    }
                     else
-                    {
                         _repository.Insert(paciente);
-                        result = true;
-                    }
+                    _repository.Save();
+                    result = true;
                 }
                 return result;
             }
@@ -90,15 +86,14 @@ namespace MedicalSolution.Services
                 {
                     var exist = _repository.GetById(pacienteId);
                     if (exist != null)
-                    {
                         _repository.Delete(exist);
-                        result = true;
-                    }
                     else
                     {
                         _logger.LogWarning(string.Format("Se intento eliminar un paciente no existente con id: {0}", pacienteId));
-                        result = false;
+                        return false;
                     }
+                    _repository.Save();
+                    result = true;
                 }
                 return result;
             }

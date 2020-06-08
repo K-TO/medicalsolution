@@ -11,15 +11,17 @@ namespace MedicalSolution.Services
     {
 
         #region Members
+        private readonly ILogger<DoctorService> _logger;
         private readonly IGenericRepository<Doctor> _repository;
         private IValidationDictionary _validationDictionary;
-        private readonly ILogger _logger;
+        //private readonly ILogger _logger;
         #endregion
 
         #region Ctor
-        public DoctorService(IGenericRepository<Doctor> repository)
+        public DoctorService(IGenericRepository<Doctor> repository, ILogger<DoctorService> logger)
         {
             _repository = repository;
+            _logger = logger;
         }
         #endregion
 
@@ -63,20 +65,20 @@ namespace MedicalSolution.Services
                     if (exist != null)
                     {
                         _repository.Update(doctor);
-                        result = true;
                     }
                     else
                     {
                         _repository.Insert(doctor);
-                        result = true;
                     }
+                    _repository.Save();
+                    result = true;
                 }
                 return result;
             }
             catch (Exception ex)
             {
                 _logger.LogError(string.Concat("Error en DoctorService/CreateOrUpdate: ", ex.Message));
-                _validationDictionary.AddError("Error", "Error al modificar los datos del doctor, consulte al administrador.");
+                //this._validationDictionary.AddError("Error", "Error al modificar los datos del doctor, consulte al administrador.");
                 return false;
             }
         }
@@ -96,7 +98,7 @@ namespace MedicalSolution.Services
                     }
                     else
                     {
-                        _logger.LogWarning(string.Format("Se intento eliminar un doctor no existente con id: {0}", doctorId));
+                        //_logger.LogWarning(string.Format("Se intento eliminar un doctor no existente con id: {0}", doctorId));
                         result = false;
                     }
                 }
@@ -104,7 +106,7 @@ namespace MedicalSolution.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(string.Concat("Error en DoctorService/Delete: ", ex.Message));
+                //_logger.LogError(string.Concat("Error en DoctorService/Delete: ", ex.Message));
                 _validationDictionary.AddError("Error", "Error al eliminar los datos del doctor, consulte al administrador.");
                 return false;
             }

@@ -26,6 +26,7 @@ namespace MedicalSolution.Presentation.ErrorHandler
                         await context.Response.WriteAsync(new ErrorDetails()
                         {
                             StatusCode = context.Response.StatusCode,
+                            IsError = true,
                             Message = "Internal server error"
                         }.ToString());
                     }
