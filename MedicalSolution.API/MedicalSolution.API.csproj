@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MedicalSolution.Data\MedicalSolution.Data.csproj" />
+    <ProjectReference Include="..\MedicalSolution.Framework\MedicalSolution.Framework.csproj" />
+    <ProjectReference Include="..\MedicalSolution.Infraestructure\MedicalSolution.Infraestructure.csproj" />
+    <ProjectReference Include="..\MedicalSolution.Services\MedicalSolution.Services.csproj" />
+  </ItemGroup>
+
+</Project>

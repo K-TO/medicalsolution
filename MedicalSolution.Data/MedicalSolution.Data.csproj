@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200607012455_InitialMigration.cs" />
+    <Compile Remove="Migrations\20200607012455_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200607025531_InitialMigration.cs" />
+    <Compile Remove="Migrations\20200607025531_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200607030443_InitialMigration.cs" />
+    <Compile Remove="Migrations\20200607030443_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200607180038_InitialMigration.cs" />
+    <Compile Remove="Migrations\20200607180038_InitialMigration.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MedicalSolution.Infraestructure\MedicalSolution.Infraestructure.csproj" />
+  </ItemGroup>
+
+</Project>

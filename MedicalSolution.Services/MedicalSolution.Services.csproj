@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Generic\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MedicalSolution.Data\MedicalSolution.Data.csproj" />
+    <ProjectReference Include="..\MedicalSolution.Infraestructure\MedicalSolution.Infraestructure.csproj" />
+  </ItemGroup>
+
+</Project>

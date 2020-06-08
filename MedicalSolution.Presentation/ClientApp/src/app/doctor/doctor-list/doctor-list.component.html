@@ -1,0 +1,32 @@
+<div class="container">
+  <div>
+    <h1 class="title">Listado De Doctores</h1>
+  </div>
+  <table class='table table-striped' *ngIf="doctores">
+    <thead>
+      <tr>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Credencial</th>
+        <th>Hospital</th>
+        <th>Especialidad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr *ngIf="doctores.length <=0 ">
+        <td colspan="6" class="text-center">No hay doctores registrados.</td>
+      </tr>
+      <tr *ngFor="let doctor of doctores">
+        <td>{{ doctor.nombres }}</td>
+        <td>{{ doctor.apellidos }}</td>
+        <td>{{ doctor.credencial }}</td>
+        <td>{{ doctor.hospital }}</td>
+        <td>{{ doctor.especialidad }}</td>
+        <td>
+          <button (click)="ver(doctor.id)" type="button" class="btn btn-sm btn-group btn-success">Ver</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
