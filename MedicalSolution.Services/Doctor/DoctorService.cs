@@ -14,7 +14,6 @@ namespace MedicalSolution.Services
         private readonly ILogger<DoctorService> _logger;
         private readonly IGenericRepository<Doctor> _repository;
         private IValidationDictionary _validationDictionary;
-        //private readonly ILogger _logger;
         #endregion
 
         #region Ctor
