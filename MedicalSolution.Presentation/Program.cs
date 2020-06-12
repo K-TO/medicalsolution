@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
+using NLog.Web;
 using System;
 
 namespace MedicalSolution.Presentation
@@ -31,6 +33,11 @@ namespace MedicalSolution.Presentation
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>().ConfigureLogging(log =>
+                {
+                    log.ClearProviders();
+                    log.SetMinimumLevel(LogLevel.Trace);
+                })
+                .UseNLog();
     }
 }
